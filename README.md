@@ -17,6 +17,8 @@ It's easy to use a CDN in your ASP.NET Core web application. Here's how to get s
 ### 1. Setup a CDN
 We recommend you use the [Azure CDN (Verizon)](https://azure.microsoft.com/en-us/services/cdn/), but any CDN supporting *reverse proxying* or *origin push* will work (almost all CDNs support it).
 
+> Keep in mind that you don't need to host your website on Azure in order to use the Azure CDN.
+
 When using the Azure CDN, you will get an endpoint URL that looks something like this: `https://myname.azureedge.net`. You need that URL in step 2.
 
 ### 2. Register the Tag Helpers
