@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Html;
+﻿using System;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
-using System;
 
 namespace WebEssentials.AspNetCore.CdnTagHelpers
 {
