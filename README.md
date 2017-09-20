@@ -3,7 +3,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/txquc7aq1kgweap7?svg=true)](https://ci.appveyor.com/project/madskristensen/webessentials-aspnetcore-cdntaghelpers)
 [![NuGet](https://img.shields.io/nuget/v/WebEssentials.AspNetCore.CdnTagHelpers.svg)](https://nuget.org/packages/WebEssentials.AspNetCore.CdnTagHelpers/)
 
-This NuGet package makes it painless to use a Content Delivery Network (CDN) to serve static files from any ASP.NET Core web application.
+This NuGet package makes it painless to use a Content Delivery Network (CDN) to serve static files from any ASP.NET Core web application no matter where it is hosted.
 
 Using a CDN to serve static resoruces (JS, CSS and image files) can significantly speed up the delivery of content to your users by serving those resources from edge servers located in data centers around the world. This reduces latency by a wide margin.
 
