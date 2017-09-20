@@ -17,7 +17,7 @@ Read more about [Content Delivery Networks here](https://docs.microsoft.com/en-u
 It's easy to use a CDN in your ASP.NET Core web application. Here's how to get started.
 
 ### 1. Setup a CDN
-We recommend you use the [Azure CDN (Verizon)](https://azure.microsoft.com/en-us/services/cdn/), but any CDN supporting *reverse proxying* or *origin push* will work (almost all CDNs support it).
+We recommend you use the Azure CDN ([try it for free now](https://azure.microsoft.com/en-us/free/?utm_source=github&utm_medium=referral&utm_campaign=wt-cdntaghelpers)), but any CDN supporting *reverse proxying* or *origin push* will work.
 
 > Keep in mind that you don't need to host your website on Azure in order to use the Azure CDN.
 
