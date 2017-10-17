@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.Extensions.Configuration;
 
 namespace WebEssentials.AspNetCore.CdnTagHelpers
 {
@@ -50,6 +50,7 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
             if (output.Attributes.ContainsName("no-cdn"))
             {
                 output.Attributes.RemoveAll("cdn-prop");
+                output.Attributes.RemoveAll("no-cdn");
                 return;
             }
 
