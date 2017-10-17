@@ -16,6 +16,11 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
 
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
+            if (string.IsNullOrWhiteSpace(_cdnUrl) || string.IsNullOrEmpty(output.TagName))
+            {
+                return;
+            }
+
             TagHelperContent content = await output.GetChildContentAsync(NullHtmlEncoder.Default);
             string html = content.GetContent();
             string cdnified = html.CdnifyHtmlImageUrls(_cdnUrl);
