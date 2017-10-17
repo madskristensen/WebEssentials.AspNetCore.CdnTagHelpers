@@ -53,7 +53,7 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
                 return;
             }
 
-            if (_attributes.TryGetValue(output.TagName, out var attributeNames))
+            if (_attributes.TryGetValue(output.TagName, out string[] attributeNames))
             {
                 foreach (string attrName in attributeNames)
                 {
@@ -61,7 +61,7 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
                 }
             }
 
-            if (output.Attributes.TryGetAttribute("cdn-prop", out var prop))
+            if (output.Attributes.TryGetAttribute("cdn-prop", out TagHelperAttribute prop))
             {
                 PrependCdnUrl(output, "cdn-prop");
                 output.Attributes.RemoveAll("cdn-prop");
@@ -73,7 +73,7 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
             string attrValue = GetValue(attrName, output);
 
             // Don't modify absolute paths
-            if (string.IsNullOrWhiteSpace(attrName) || string.IsNullOrWhiteSpace(attrValue) || attrValue.Contains("://") || attrValue.StartsWith("//"))
+            if (string.IsNullOrWhiteSpace(attrName) || string.IsNullOrWhiteSpace(attrValue) || attrValue.Contains("://") || attrValue.StartsWith("//") || attrValue.StartsWith("data:"))
             {
                 return;
             }
@@ -94,7 +94,7 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
 
         public static string GetValue(string attrName, TagHelperOutput output)
         {
-            if (string.IsNullOrEmpty(attrName) || !output.Attributes.TryGetAttribute(attrName, out var attr))
+            if (string.IsNullOrEmpty(attrName) || !output.Attributes.TryGetAttribute(attrName, out TagHelperAttribute attr))
             {
                 return null;
             }
