@@ -9,8 +9,8 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
         public static string CdnifyHtmlImageUrls(this string html, string cdnUrl)
         {
             string result = html;
-
-            var matches = new List<Match>(Regex.Matches(result, "<img[^>]+src=\"(?<src>[^\"]+)\"[^>]+>").Cast<Match>());
+            MatchCollection matchCollection = Regex.Matches(result, "<img[^>]+src=\"(?<src>[^\"]+)\"[^>]+>");
+            IEnumerable<Match> matches = new List<Match>(matchCollection.Cast<Match>()).ToArray().Reverse();
 
             foreach (Match match in matches)
             {
