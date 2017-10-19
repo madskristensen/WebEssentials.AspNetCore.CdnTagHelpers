@@ -15,9 +15,11 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
     [HtmlTargetElement("source")]
     [HtmlTargetElement("link", Attributes = "[rel=stylesheet]")]
     [HtmlTargetElement("link", Attributes = "[rel=alternate]")]
-    [HtmlTargetElement("link", Attributes = "[rel$=-icon]")]
+    [HtmlTargetElement("link", Attributes = "[rel$=image]")]
+    [HtmlTargetElement("link", Attributes = "[rel$=icon]")]
     [HtmlTargetElement("link", Attributes = "[rel$=-icon-precomposed]")]
-    [HtmlTargetElement("link", Attributes = "[rel$=apple-touch-startup-image]")]
+    [HtmlTargetElement("meta", Attributes = "[name$=image]")]
+    [HtmlTargetElement("meta", Attributes = "[property=image]")]
     [HtmlTargetElement("script")]
     [HtmlTargetElement("*", Attributes = "cdn-prop")]
     public class CdnTagHelper : TagHelper
@@ -31,6 +33,7 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
             { "img", new[] { "src", "srcset" } },
             { "input", new[] { "src" } },
             { "link", new[] { "href" } },
+            { "meta", new[] { "content" } },
             { "menuitem", new[] { "icon" } },
             { "script", new[] { "src" } },
             { "source", new[] { "src", "srcset" } },
