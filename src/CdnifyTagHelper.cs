@@ -21,8 +21,7 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
                 return;
             }
 
-            TagHelperContent content = await output.GetChildContentAsync(NullHtmlEncoder.Default);
-            string html = content.GetContent();
+            string html = output.Content.IsModified ? output.Content.GetContent() :(await output.GetChildContentAsync()).GetContent();
             string cdnified = html.CdnifyHtmlImageUrls(_cdnUrl);
 
             output.Attributes.RemoveAll("cdnify");

@@ -13,8 +13,13 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
     [HtmlTargetElement("video")]
     [HtmlTargetElement("track")]
     [HtmlTargetElement("source")]
-    [HtmlTargetElement("link")]
+    [HtmlTargetElement("link", Attributes = "[rel=stylesheet]")]
+    [HtmlTargetElement("link", Attributes = "[rel=alternate]")]
+    [HtmlTargetElement("link", Attributes = "[rel$=-icon]")]
+    [HtmlTargetElement("link", Attributes = "[rel$=-icon-precomposed]")]
+    [HtmlTargetElement("link", Attributes = "[rel$=apple-touch-startup-image]")]
     [HtmlTargetElement("script")]
+    [HtmlTargetElement("*", Attributes = "cdn-prop")]
     public class CdnTagHelper : TagHelper
     {
         private string _cdnUrl;
@@ -64,7 +69,8 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
 
             if (output.Attributes.TryGetAttribute("cdn-prop", out TagHelperAttribute prop))
             {
-                PrependCdnUrl(output, "cdn-prop");
+                string targetProp = GetValue("cdn-prop", output);
+                PrependCdnUrl(output, targetProp);
                 output.Attributes.RemoveAll("cdn-prop");
             }
         }
