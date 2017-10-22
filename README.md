@@ -57,6 +57,15 @@ You can do that by looking at the HTML source code. There should no longer by an
 <script src="https://myname.azureedge.net/js/site.js"></script>
 ```
 
+## Dynamic HTML
+If HTML is generated from a database or other source where you don't control the markup, you can still cdnify the image elements by using the `cdnify` attribute like so:
+
+```html
+<article class="blogpost" cdnify>
+  @Model.Post
+</article>
+```
+
 ## Configuration
 Use the **appsettings.json** file to store the configuration settings.
 
