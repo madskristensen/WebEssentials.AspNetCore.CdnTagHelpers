@@ -6,12 +6,12 @@ using Microsoft.Extensions.Configuration;
 namespace WebEssentials.AspNetCore.CdnTagHelpers
 {
     [HtmlTargetElement("head")]
-    public class DnsPrefetchTagHelper : TagHelper
+    public class PreConnectTagHelper : TagHelper
     {
         private string _cdnUrl;
         private string _dnsPrefetch;
 
-        public DnsPrefetchTagHelper(IConfiguration config)
+        public PreConnectTagHelper(IConfiguration config)
         {
             _cdnUrl = config["cdn:url"];
             _dnsPrefetch = config["cdn:prefetch"];
@@ -27,7 +27,7 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
             }
 
             var url = new Uri(_cdnUrl, UriKind.Absolute);
-            var link = new HtmlString($"<link rel=\"dns-prefetch\" href=\"{url.OriginalString}\" />");
+            var link = new HtmlString($"<link rel=\"preconnect\" href=\"{url.OriginalString}\" />");
 
             output.PreContent.AppendHtml(link);
         }
