@@ -15,6 +15,7 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
     [HtmlTargetElement("source")]
     [HtmlTargetElement("link", Attributes = "[rel=stylesheet]")]
     [HtmlTargetElement("link", Attributes = "[rel=alternate]")]
+    [HtmlTargetElement("link", Attributes = "[rel=preload]")]
     [HtmlTargetElement("link", Attributes = "[rel$=image]")]
     [HtmlTargetElement("link", Attributes = "[rel$=icon]")]
     [HtmlTargetElement("link", Attributes = "[rel$=-icon-precomposed]")]
