@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
 
@@ -20,16 +21,17 @@ namespace WebEssentials.AspNetCore.CdnTagHelpers
 
         public override int Order => base.Order + 100;
 
-        public override void Process(TagHelperContext context, TagHelperOutput output)
+        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             if (string.IsNullOrWhiteSpace(_cdnUrl) || output.TagName != "style")
             {
                 return;
             }
 
-            string css = output.Content.GetContent();
+            TagHelperContent content = await output.GetChildContentAsync();
+            string css = content.GetContent();
 
-            IEnumerable<Match> matches = _rxUrl.Matches(css).Cast<Match>().Reverse();
+            IEnumerable<Match> matches = _rxUrl.Matches(content.GetContent()).Cast<Match>().Reverse();
 
             foreach (Match match in matches)
             {
